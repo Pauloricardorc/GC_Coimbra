@@ -1,6 +1,6 @@
 
 exports.up = function (knex) {
-    return knex.schema.createTable('Arrendamento', function (table) {
+    return knex.schema.createTable('Gestao_de_contrato', function (table) {
         table.string('cte_razao_social').notNullable();
         table.string('cte_cnpj').notNullable();
         table.string('cte_endereco').notNullable();
@@ -13,15 +13,15 @@ exports.up = function (knex) {
 
         table.string('tipo_do_contrato').notNullable();
 
-        table.boolean('carencia');
-        table.boolean('vigencia');
-        table.float('valores');
-        table.date('prazos');
+        table.string('carencia').notNullable();
+        table.string('vigencia').notNullable();
+        table.string('valores').notNullable();
+        table.string('prazos').notNullable();
 
         table.string('status').notNullable();
     })
 };
 
 exports.down = function (knex) {
-    return knex.schema.dropTable('Arrendamento')
+    return knex.schema.dropTable('Gestao_de_contrato')
 };
