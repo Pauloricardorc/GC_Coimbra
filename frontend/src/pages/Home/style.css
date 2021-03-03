@@ -1,5 +1,8 @@
 .ContainerHme{
-    display: flex;
+    display: grid;
+    grid-template-columns: 300px auto;
+    height: 100vh;
+    position: fixed;
     width: 100%;
 }
 .ContainerHme .conteudo{
@@ -7,6 +10,7 @@
     flex-direction: column;
     width: 100%;
     padding: 0 50px;
+    overflow-y: scroll;
 }
 .conteudo .header_conteudo{
     width: 100%;

@@ -1,6 +1,6 @@
 .Container_nav{
     display: flex;
-    width: 30%;
+    width: 100%;
 }
 
 
@@ -10,6 +10,7 @@
 
 .Container_nav{
     border-right: 3px solid #DDD;
+    display: flex;
 }
 
 .navbar_left{
