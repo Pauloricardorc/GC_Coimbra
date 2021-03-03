@@ -1,14 +1,20 @@
 const conect = require('../Database/connection')
+const crypto = require('crypto')
+
+var name = 'hashContrato';
+var hash = crypto.createHash('md5').update(name).digest('hex')
 
 module.exports = {
     async index(req, res){
+
         const Gestao_de_contrato = await conect('Gestao_de_contrato').select('*')
 
         return res.json(Gestao_de_contrato)
     },
-
+    
     async create(req, res){
-        const { 
+        
+        const {
             cte_razao_social, cte_cnpj, cte_endereco, cte_telefone, 
             cto_razao_social, cto_cnpj, cto_endereco, cto_telefone,
             tipo_do_contrato,
@@ -17,6 +23,7 @@ module.exports = {
         } = req.body
 
         await conect('Gestao_de_contrato').insert({
+            hash,
             cte_razao_social, cte_cnpj, cte_endereco, cte_telefone, 
             cto_razao_social, cto_cnpj, cto_endereco, cto_telefone,
             tipo_do_contrato,
@@ -25,5 +32,14 @@ module.exports = {
         })
 
         return res.json({ 'success': 'Cadastro Comcluído com sucesso'})
+    },
+
+    async list(req, res){
+        
+        const { id } = req.params
+
+        const gestao_de_contrato = await conect('Gestao_de_contrato').where('id', id)
+
+        return res.json(gestao_de_contrato)
     }
 }

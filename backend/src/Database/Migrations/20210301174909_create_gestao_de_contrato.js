@@ -2,6 +2,7 @@
 exports.up = function (knex) {
     return knex.schema.createTable('Gestao_de_contrato', function (table) {
         table.increments('id').notNullable();
+        table.string('hash').notNullable();
 
         table.string('cte_razao_social').notNullable();
         table.string('cte_cnpj').notNullable();
