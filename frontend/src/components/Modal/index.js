@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Modal, ModalFooter, ModalBody, ModalTitle, Button, Title} from 'react-bootstrap'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import api from '../../services/api'
@@ -8,9 +8,14 @@ import './style.css'
 function Modale () {
     const history = useHistory()
 
-    let { id } = useParams()
+    const [gest_contrato, setGest_contrato] = useState([])
 
-    
+    let { hash } = useParams()
+
+    useEffect(() => {
+        api.get(`gestao_de_contrato/${hash}`)
+            .then(resp => setGest_contrato(resp.data))
+    }, [])
 
     const [show, setShow] = useState(true);
 
@@ -23,17 +28,20 @@ function Modale () {
 
     return (
         <div className="modal_container">
-            <Modal show={show} onHide={handleClose}>
+            {gest_contrato.map(ctr => (
+                <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>A</Modal.Title>
+                    <Modal.Title> {ctr.id} </Modal.Title>
                 </Modal.Header>
-                <Modal.Body></Modal.Body>
+                <Modal.Body> {ctr.cte_razao_social} </Modal.Body>
+                <Modal.Body> {ctr.cto_razao_social} </Modal.Body>
                 <Modal.Footer>
                     <Link variant="secondary" onClick={handleClose}>
                         Close
                     </Link>
                 </Modal.Footer>
-            </Modal>
+            </Modal>    
+            ))}
         </div>
     )
 }

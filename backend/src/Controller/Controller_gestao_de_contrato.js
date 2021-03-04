@@ -36,9 +36,9 @@ module.exports = {
 
     async list(req, res){
         
-        const { id } = req.params
+        const { hash } = req.params
 
-        const gestao_de_contrato = await conect('Gestao_de_contrato').where('id', id)
+        const gestao_de_contrato = await conect('Gestao_de_contrato').where('hash', hash)
 
         return res.json(gestao_de_contrato)
     }

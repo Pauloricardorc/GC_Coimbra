@@ -46,7 +46,7 @@ function Home() {
                                         <p class="card-text" name="razao_social ">{contrato.cto_razao_social}</p>
                                     </div>
                                     <div class="card-footer button_env text-center bg-transparent border-success">
-                                        <Link className="btn" variant="primary" to={{pathname: `/Modale/${contrato.id}`}} onClick={handleShow}>
+                                        <Link className="btn" variant="primary" to={{pathname: `/Modale/${contrato.hash}`}} onClick={handleShow}>
                                             Mostrar
                                         </Link>
                                     </div>
