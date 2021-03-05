@@ -40,3 +40,8 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
+.bnt_limpa{
+    margin-bottom: 0 !important;
+    margin-top:15px;
+}

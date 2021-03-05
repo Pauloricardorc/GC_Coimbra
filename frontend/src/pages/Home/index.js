@@ -10,8 +10,15 @@ function Home() {
     const [show, setShow] = useState(false);
     const history = useHistory()
 
-    const [op1, setOp1] = useState('')
-    const [op2, setOp2] = useState('')
+    let [op1, setOp1] = useState('')
+    let [op2, setOp2] = useState('')
+    let [op3, setOp3] = useState('')
+
+    const Limpar = () => {
+        setOp1('')
+        setOp2('')
+        setOp3('')
+    }
 
     const handleClose = () => setShow(false);
     const handleShow = () => {
@@ -26,12 +33,12 @@ function Home() {
     const [gest_contrato, setGest_contrato] = useState([])
 
     useEffect(() => {
-        Api.get(`gestao_de_contrato?tipo_do_contrato=${op1}&status=${op2}`)
+        Api.get(`gestao_de_contrato?tipo_do_contrato=${op1}&status=${op2}&i_vigencia=${op3}`)
             .then(resp => setGest_contrato(resp.data))
-    }, [op1, op2])
+            console.log(op1, op2, op3)
+    }, [op1, op2, op3])
 
 
-    console.log(op1, op2)
 
     return (
         <div className="ContainerHme">
@@ -42,20 +49,31 @@ function Home() {
                         <div class="container-fluid pesquisa">
                             <Form.Group as={Col} controlId="formGridState">
                                 <Form.Label>Contrato</Form.Label>
-                                <Form.Control as="select" value={op1} onChange={e => setOp1(e.target.value)}>
+                                <Form.Control as="select" value={op1} onChange={e => setOp1(e.target.value)} defaultValue="1">
+                                    <option selected disabled value=''></option>
                                     <option>Emprestimo</option>
                                     <option>Arrendamento</option>
                                     <option>Seguro</option>
                                     <option>Locação de Serviços e Equipamentos</option>
                                 </Form.Control>
                             </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Inicial Vigencia</Form.Label>
+                                <input type="date" defaultValue="" value={op3} onChange={e => setOp3(e.target.value)} class="form-control" id="razao_social"/>
+                            </Form.Group>
                             <Form.Group as={Col} controlId="formGridState">
                                 <Form.Label>Status</Form.Label>
                                 <Form.Control as="select" value={op2} onChange={e => setOp2(e.target.value)} defaultValue="">
-                                    <option>Em Edição</option>
+                                    <option selected disabled value=''></option>
+                                    <option selected>Em Edição</option>
                                     <option>Ativo</option>
                                     <option>Cancelado</option>
                                 </Form.Control>
+                            </Form.Group>
+                            <Form.Group as={Col} className="bnt_limpa" controlId="formGridState">
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <button type="button" onClick={Limpar} class="btn btn-danger">Limpar</button>
+                                </div>
                             </Form.Group>
                         </div>
                     </nav>
@@ -82,14 +100,14 @@ function Home() {
                     ))}
                 </div>
                 {gest_contrato.length == 0 &&
-                        [
-                            'danger',
-                          ].map((variant, idx) => (
-                            <Alert key={idx} variant={variant}>
-                              Não foi possivel encontrar nenhum contrato com essas especificações
-                            </Alert>
-                          ))
-                    }
+                    [
+                        'danger',
+                        ].map((variant, idx) => (
+                        <Alert key={idx} variant={variant}>
+                            Não foi possivel encontrar nenhum contrato com essas especificações
+                        </Alert>
+                        ))
+                }
             </div>
         </div>
 

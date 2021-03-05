@@ -67,23 +67,23 @@ function Emprestimos() {
                                     <div className="row g-2 cx-form">
                                     <div className="col-md-7">
                                         <label for="razao_social" class="form-label">Razão Social</label>
-                                        <input type="text" value={cte_razao_social} onChange={e => setCte_razaoSocial(e.target.value)} class="form-control" id="razao_social"/>
+                                        <input type="text" value={cte_razao_social} onChange={e => setCte_razaoSocial(e.target.value)} class="form-control" id="razao_social" required/>
                                     </div>
                                     <div className="col-md-5">
                                         <label for="cnpj" class="form-label">CNPJ</label>
-                                        <InputMask type="text" mask="99.999.999/9999-99" value={cte_cnpj} onChange={e => setCte_cnpj(e.target.value)} class="form-control" id="cnpj"/>
+                                        <InputMask type="text" mask="99.999.999/9999-99" value={cte_cnpj} onChange={e => setCte_cnpj(e.target.value)} class="form-control" id="cnpj" required/>
                                     </div>
                                     </div>
                                     <div className="row g-2 cx-form">
                                         <div className="col-md-6">
                                             <label for="razao_social" class="form-label">Endereço</label>
-                                            <input type="text" value={cte_endereco} onChange={e => setCte_Endereco(e.target.value)} class="form-control" id="razao_social"/>
+                                            <input type="text" value={cte_endereco} onChange={e => setCte_Endereco(e.target.value)} class="form-control" id="razao_social" required/>
                                         </div>
                                     </div>
                                     <div className="row g-2 cx-form">
                                         <div className="col-md-6">
                                             <label for="cnpj" class="form-label">Telefone</label>
-                                            <InputMask  type="text" mask="(99) 9 9999 9999" value={cte_telefone} onChange={e => setCte_telefone(e.target.value)} class="form-control" id="cnpj"/>
+                                            <InputMask  type="text" mask="(99) 9 9999 9999" value={cte_telefone} onChange={e => setCte_telefone(e.target.value)} class="form-control" id="cnpj" required/>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -96,23 +96,23 @@ function Emprestimos() {
                                     <div className="row g-2 cx-form">
                                     <div className="col-md-7">
                                         <label for="razao_social" class="form-label">Razão Social</label>
-                                        <input type="text" value={cto_razao_social} onChange={e => setCto_razaoSocial(e.target.value)} class="form-control" id="razao_social"/>
+                                        <input type="text" value={cto_razao_social} onChange={e => setCto_razaoSocial(e.target.value)} class="form-control" id="razao_social" required/>
                                     </div>
                                     <div className="col-md-5">
                                         <label for="cnpj" class="form-label">CNPJ</label>
-                                        <InputMask type="text" mask="99.999.999/9999-99" value={cto_cnpj} onChange={e => setCto_cnpj(e.target.value)} class="form-control" id="cnpj"/>
+                                        <InputMask type="text" mask="99.999.999/9999-99" value={cto_cnpj} onChange={e => setCto_cnpj(e.target.value)} class="form-control" id="cnpj" required/>
                                     </div>
                                     </div>
                                     <div className="row g-2 cx-form">
                                         <div className="col-md-6">
                                             <label for="razao_social" class="form-label">Endereço</label>
-                                            <input type="text" value={cto_endereco} onChange={e => setCto_Endereco(e.target.value)} class="form-control" id="razao_social"/>
+                                            <input type="text" value={cto_endereco} onChange={e => setCto_Endereco(e.target.value)} class="form-control" id="razao_social" required/>
                                         </div>
                                     </div>
                                     <div className="row g-2 cx-form">
                                         <div className="col-md-6">
                                             <label for="cnpj" class="form-label">Telefone</label>
-                                            <InputMask  type="text" mask="(99) 9 9999 9999" onChange={e => setCto_telefone(e.target.value)} class="form-control" id="cnpj"/>
+                                            <InputMask  type="text" mask="(99) 9 9999 9999" onChange={e => setCto_telefone(e.target.value)} class="form-control" id="cnpj" required/>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -127,7 +127,7 @@ function Emprestimos() {
                                     <div class="row ct_tipo_do_contrato">
                                         <Form.Group as={Col} controlId="formGridState">
                                             <Form.Label >Tipo de Contrato</Form.Label>
-                                            <Form.Control as="select" value={tipo_do_contrato} onChange={e => setTipo_do_contrato(e.target.value)} defaultValue="Em Edição">
+                                            <Form.Control as="select" value={tipo_do_contrato} onChange={e => setTipo_do_contrato(e.target.value)} defaultValue="Em Edição" required>
                                                 <option>Emprestimo</option>
                                                 <option>Arrendamento</option>
                                                 <option>Seguro</option>
@@ -140,30 +140,30 @@ function Emprestimos() {
                                     <div class="row">
                                         <div class="col-md-3">
                                             <label for="formGroupExampleInput" class="form-label">Carêcia</label>
-                                            <input type="date" value={carencia} onChange={e => setCarencia(e.target.value)} class="form-control" placeholder="Tempo de Carência" aria-label="Tempo_carencia"/>
+                                            <input type="date" value={carencia} onChange={e => setCarencia(e.target.value)} class="form-control" placeholder="Tempo de Carência" aria-label="Tempo_carencia" required/>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="formGroupExampleInput" class="form-label">Inicio da Vigência</label>
-                                            <input type="date" value={i_vigencia} onChange={e => setIvigencia(e.target.value)} class="form-control" placeholder="Vigência" aria-label="i_vigencia"/>
+                                            <input type="date" value={i_vigencia} onChange={e => setIvigencia(e.target.value)} class="form-control" placeholder="Vigência" aria-label="i_vigencia" required/>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="formGroupExampleInput" class="form-label">Fim da Vigência</label>
-                                            <input type="date" value={f_vigencia} onChange={e => setFvigencia(e.target.value)} class="form-control" placeholder="Vigência" aria-label="f_vigencia"/>
+                                            <input type="date" value={f_vigencia} onChange={e => setFvigencia(e.target.value)} class="form-control" placeholder="Vigência" aria-label="f_vigencia" required/>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="formGroupExampleInput" class="form-label">Valor</label>
-                                            <InputMask type="text" mask="99.999,99" value={valores} onChange={e => setValores(e.target.value)} class="form-control" placeholder="Valor" aria-label="Valor"/>
+                                            <InputMask type="text" mask="99.999,99" value={valores} onChange={e => setValores(e.target.value)} class="form-control" placeholder="Valor" aria-label="Valor" required/>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="formGroupExampleInput" class="form-label">Prazo</label>
-                                            <input type="date" value={prazos} onChange={e => setPrazos(e.target.value)} class="form-control" placeholder="Prazo" aria-label="Prazo"/>
+                                            <input type="date" value={prazos} onChange={e => setPrazos(e.target.value)} class="form-control" placeholder="Prazo" aria-label="Prazo" required/>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div class="col-md-3 ct_status">
                                             <Form.Group as={Col} controlId="formGridState">
                                                 <Form.Label >Status</Form.Label>
-                                                <Form.Control as="select" value={status} onChange={e => setStatus(e.target.value)} defaultValue="Em Edição">
+                                                <Form.Control as="select" value={status} onChange={e => setStatus(e.target.value)} defaultValue="Em Edição" required>
                                                     <option>Em Edição</option>
                                                     <option>Ativo</option>
                                                     <option>Cancelado</option>
