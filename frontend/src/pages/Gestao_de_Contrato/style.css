@@ -23,7 +23,7 @@
 
 .Container_box{
     display: grid;
-    grid-template-columns: repeat(3, 2fr);
+    grid-template-columns: repeat(2, 2fr);
     width: 100%;
 }
 
@@ -42,11 +42,17 @@
     height: 15rem;
 }
 .box_container .box_doc .Container_card .cont_title{
-    height: 70px;
+    height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-weight: 400;
+    font-weight: 500;
+}
+
+.box_container .box_doc .Container_card .cont_title .card-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .box_container .box_doc .Container_card .button_env{
@@ -55,11 +61,17 @@
     padding: 0;
     margin: 0;
 }
-.box_container .box_doc .Container_card .button_env button{
+.box_container .box_doc .Container_card .button_env .button-env {
     display: flex;
     justify-content: center;
+    color: #333;
+    text-decoration: none;
     width: 100%;
     border-radius: 0px;
+    padding: 5px 0;
+}
+.box_container .box_doc .Container_card .button_env .button-env:hover{
+    color: #0d6efd;
 }
 
 .container .container_form{
@@ -121,7 +133,6 @@
 }
 
 .ct_objeto .container_box{
-    margin: 10px 0;
 }
 .ct_objeto .container_box legend{
     color: #333;
@@ -140,4 +151,13 @@
 }
 .button_submit button{
     width: 100px;
+}
+
+.ct_status{
+    padding: 0 !important;
+    margin: 0;
+}
+
+.ct_tipo_do_contrato{
+    padding: 0 !important;
 }

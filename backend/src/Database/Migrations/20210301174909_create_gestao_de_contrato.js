@@ -17,7 +17,8 @@ exports.up = function (knex) {
         table.string('tipo_do_contrato').notNullable();
 
         table.string('carencia').notNullable();
-        table.string('vigencia').notNullable();
+        table.string('i_vigencia').notNullable();
+        table.string('f_vigencia').notNullable();
         table.string('valores').notNullable();
         table.string('prazos').notNullable();
 

@@ -1,15 +1,27 @@
 const conect = require('../Database/connection')
-const crypto = require('crypto')
+const crypto = require('crypto');
 
 var name = 'hashContrato';
 var hash = crypto.createHash('md5').update(name).digest('hex')
 
 module.exports = {
     async index(req, res){
+        const {tipo_do_contrato} = req.query
+        const {status} = req.query
 
-        const Gestao_de_contrato = await conect('Gestao_de_contrato').select('*')
+        if (tipo_do_contrato == '' || status == ''){
+            const Gestao_de_contrato = await conect('Gestao_de_contrato')
+                .select('*')
+            return res.json(Gestao_de_contrato)
+        }   
+
+        const Gestao_de_contrato = await conect('Gestao_de_contrato')
+            .where({tipo_do_contrato})
+            .andWhere({status})
+            .select('*')
 
         return res.json(Gestao_de_contrato)
+
     },
     
     async create(req, res){
@@ -18,7 +30,7 @@ module.exports = {
             cte_razao_social, cte_cnpj, cte_endereco, cte_telefone, 
             cto_razao_social, cto_cnpj, cto_endereco, cto_telefone,
             tipo_do_contrato,
-            carencia, vigencia, valores, prazos,
+            carencia, i_vigencia, f_vigencia, valores, prazos,
             status
         } = req.body
 
@@ -27,7 +39,7 @@ module.exports = {
             cte_razao_social, cte_cnpj, cte_endereco, cte_telefone, 
             cto_razao_social, cto_cnpj, cto_endereco, cto_telefone,
             tipo_do_contrato,
-            carencia, vigencia, valores, prazos,
+            carencia, i_vigencia, f_vigencia, valores, prazos,
             status
         })
 
@@ -36,10 +48,10 @@ module.exports = {
 
     async list(req, res){
         
-        const { hash } = req.params
+        const { id } = req.params
 
-        const gestao_de_contrato = await conect('Gestao_de_contrato').where('hash', hash)
+        const gestao_de_contrato = await conect('Gestao_de_contrato').where('id', id)
 
         return res.json(gestao_de_contrato)
-    }
+    },
 }

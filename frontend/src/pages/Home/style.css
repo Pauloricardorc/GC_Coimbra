@@ -34,3 +34,9 @@
 .conteudo .box_doc{
     padding: 20px 20px;
 }
+
+.card-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
