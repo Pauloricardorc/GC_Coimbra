@@ -25,18 +25,16 @@ function Home() {
         <Modale />
     };
 
-    const Pesquisa = (e) => {
-        e.preventDefault()       
-        
+    const Pesquisa = (op1, op2, op3) => {  
+        Api.get(`/filter?tipo_do_contrato=${op1}&i_vigencia=${op3}&status=${op2}`).then(resp => setGest_contrato(resp.data))
     }
 
     const [gest_contrato, setGest_contrato] = useState([])
 
     useEffect(() => {
-        Api.get(`gestao_de_contrato?tipo_do_contrato=${op1}&status=${op2}&i_vigencia=${op3}`)
+        Api.get(`/gestao_de_contrato`)
             .then(resp => setGest_contrato(resp.data))
-            console.log(op1, op2, op3)
-    }, [op1, op2, op3])
+    }, [])
 
 
 
@@ -47,10 +45,10 @@ function Home() {
                 <div className="header_conteudo">
                     <nav class="navbar navbar-light wid">
                         <div class="container-fluid pesquisa">
-                            <Form.Group as={Col} controlId="formGridState">
+                            <Form.Group controlId="formGridState">
                                 <Form.Label>Contrato</Form.Label>
                                 <Form.Control as="select" value={op1} onChange={e => setOp1(e.target.value)} defaultValue="1">
-                                    <option selected disabled value=''></option>
+                                    <option selected value=''></option>
                                     <option>Emprestimo</option>
                                     <option>Arrendamento</option>
                                     <option>Seguro</option>
@@ -61,17 +59,18 @@ function Home() {
                                 <Form.Label>Inicial Vigencia</Form.Label>
                                 <input type="date" defaultValue="" value={op3} onChange={e => setOp3(e.target.value)} class="form-control" id="razao_social"/>
                             </Form.Group>
-                            <Form.Group as={Col} controlId="formGridState">
+                            <Form.Group controlId="formGridState">
                                 <Form.Label>Status</Form.Label>
                                 <Form.Control as="select" value={op2} onChange={e => setOp2(e.target.value)} defaultValue="">
-                                    <option selected disabled value=''></option>
+                                    <option selected value=''></option>
                                     <option selected>Em Edição</option>
                                     <option>Ativo</option>
                                     <option>Cancelado</option>
                                 </Form.Control>
                             </Form.Group>
-                            <Form.Group as={Col} className="bnt_limpa" controlId="formGridState">
+                            <Form.Group className="bnt_limpa" controlId="formGridState">
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <button type="button" onClick={() => Pesquisa(op1, op2, op3)} class="btn btn-info">Procurar</button>
                                     <button type="button" onClick={Limpar} class="btn btn-danger">Limpar</button>
                                 </div>
                             </Form.Group>
@@ -79,25 +78,33 @@ function Home() {
                     </nav>
                 </div>
                 <div className="Container_box">
-                    {gest_contrato.map(contrato => (
-                        <div key={contrato.id} class="box_container">
-                            <div class="col-sm-12 box_doc">
-                                <div class="card border-dark Container_card">
-                                    <div class="card-header cont_title text-center bg-transparent border-dark">{contrato.cte_razao_social}</div>
-                                    <div class="card-body card-info text-success">
-                                        <h5 class="card-title">{contrato.tipo_do_contrato}</h5>
-                                        <label><strong>Razão Social : </strong>{contrato.cto_razao_social}</label>
-                                        <label><strong>Status : </strong>{contrato.status}</label>
-                                    </div>
-                                    <div class="card-footer button_env text-center bg-transparent border-success">
-                                        <Link className="button-env text-center" variant="primary" to={{pathname: `/Modale/${contrato.id}`}} onClick={handleShow}>
-                                            Mostrar
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Razao_social</th>
+                                    <th scope="col">Endereço</th>
+                                    <th scope="col">Tipo_do_contrato</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                        {gest_contrato.map(contrato => (
+                            <tbody  key={contrato.id}>
+                                <tr>
+                                    <td>{contrato.cto_razao_social}</td>
+                                    <td>{contrato.cte_endereco}</td>
+                                    <td>{contrato.tipo_do_contrato}</td>
+                                    <td>{contrato.status}</td>
+                                    <td>
+                                    <Link to={{pathname: `/modale/${contrato.id}`}} class="btn btn-info button_icon"><i class="bi bi-pencil-square"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                    </svg></i></Link>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        ))}
+                    </table>
                 </div>
                 {gest_contrato.length == 0 &&
                     [

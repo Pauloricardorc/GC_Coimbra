@@ -15,7 +15,7 @@ function Modale () {
     let { id } = useParams()
 
     useEffect(() => {
-        api.get(`gestao_de_contrato/${id}`)
+        api.get(`/Modale/${id}`)
             .then(resp => setGest_contrato(resp.data))
     }, [])
 

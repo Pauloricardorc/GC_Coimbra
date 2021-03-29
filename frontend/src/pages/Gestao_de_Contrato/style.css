@@ -13,7 +13,8 @@
 }
 
 .container .Title{
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .Container_cte_cto {
@@ -21,9 +22,30 @@
     width: 100%;
 }
 
+@media screen and (max-width: 1000px){
+    .container .Title{
+        margin-top: 10px;
+        max-width: 400px;
+        padding: 10px 0;
+        height: 100px;
+    }
+    .Container_cte_cto{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .container .container_form {
+        width: 100%;
+        height: auto !important;
+        border: 0.5px solid #DDD;
+        margin-top: 15px;
+        margin: 5px 0 !important;
+        padding: 20px 0;
+    }
+}
+
+
 .Container_box{
-    display: grid;
-    grid-template-columns: repeat(2, 2fr);
     width: 100%;
 }
 
@@ -80,6 +102,9 @@
     border: 0.5px solid #DDD;
     margin-top: 15px;
     margin: 0 20px;
+}
+.container .container_form .bx-form{
+    margin: 0 !important;
 }
 .container .container_form .bx-form .cx-form{
     justify-content: flex-start;

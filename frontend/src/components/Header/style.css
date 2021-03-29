@@ -6,6 +6,9 @@
 
 .Container_nav .navbar_left .container_logo{
     margin-top: 5rem;
+    width: 100%;
+    padding: 15px;
+    background: #FFF;
 }
 
 .Container_nav{
@@ -17,9 +20,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #FFF;
+    background-color: #333;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     position: relative;
     padding: 0 5px;
 }
@@ -27,7 +30,7 @@
 .navbar_left .nav-left{
     display: flex;
     text-align: center;
-    justify-content: center;
+    margin-top: 5rem;
     height: 100%;
     width: 100%;
     padding: 0 5px;

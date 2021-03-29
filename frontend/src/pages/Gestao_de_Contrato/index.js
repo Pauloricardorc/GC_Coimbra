@@ -8,10 +8,10 @@ import { Form, Col } from 'react-bootstrap';
 
 function Emprestimos() {
 
-    const [cte_razao_social, setCte_razaoSocial] = useState('')
-    const [cte_cnpj, setCte_cnpj] = useState('')
-    const [cte_endereco, setCte_Endereco] = useState('')
-    const [cte_telefone, setCte_telefone] = useState('')
+    const [cte_razao_social, setCte_razaoSocial] = useState('COIMBRA IMPORTACAO E EXPORTACAO LTDA')
+    const [cte_cnpj, setCte_cnpj] = useState('06.151.921/0001-31')
+    const [cte_endereco, setCte_Endereco] = useState('TRES MARIAS')
+    const [cte_telefone, setCte_telefone] = useState('(69) 3216-2621')
     const [cto_razao_social, setCto_razaoSocial] = useState('')
     const [cto_cnpj, setCto_cnpj] = useState('')
     const [cto_endereco, setCto_Endereco] = useState('')
@@ -61,37 +61,34 @@ function Emprestimos() {
                     </div>
                     <div className="Container_cte_cto">
                         <div className="container_form">
-                            <div className="row g-2 bx-form">
-                                <fieldset>
+                            <div className="row g-3 bx-form">
                                     <legend>Contratante</legend>
                                     <div className="row g-2 cx-form">
                                     <div className="col-md-7">
                                         <label for="razao_social" class="form-label">Razão Social</label>
-                                        <input type="text" value={cte_razao_social} onChange={e => setCte_razaoSocial(e.target.value)} class="form-control" id="razao_social" required/>
+                                        <input type="text" value={cte_razao_social} class="form-control" id="razao_social" disabled/>
                                     </div>
                                     <div className="col-md-5">
                                         <label for="cnpj" class="form-label">CNPJ</label>
-                                        <InputMask type="text" mask="99.999.999/9999-99" value={cte_cnpj} onChange={e => setCte_cnpj(e.target.value)} class="form-control" id="cnpj" required/>
+                                        <InputMask type="text" mask="99.999.999/9999-99" value={cte_cnpj} /*onChange={e => setCte_cnpj(e.target.value)} */ class="form-control disabled" id="cnpj" disabled/>
                                     </div>
                                     </div>
                                     <div className="row g-2 cx-form">
-                                        <div className="col-md-6">
+                                        <div className="col-md-12">
                                             <label for="razao_social" class="form-label">Endereço</label>
-                                            <input type="text" value={cte_endereco} onChange={e => setCte_Endereco(e.target.value)} class="form-control" id="razao_social" required/>
+                                            <input type="text" value={cte_endereco} /*onChange={e => setCte_Endereco(e.target.value)}*/ class="form-control" id="razao_social" disabled/>
                                         </div>
                                     </div>
                                     <div className="row g-2 cx-form">
-                                        <div className="col-md-6">
+                                        <div className="col-md-12">
                                             <label for="cnpj" class="form-label">Telefone</label>
-                                            <InputMask  type="text" mask="(99) 9 9999 9999" value={cte_telefone} onChange={e => setCte_telefone(e.target.value)} class="form-control" id="cnpj" required/>
+                                            <InputMask  type="text" mask="(99) 9 9999 9999" value={cte_telefone} /*onChange={e => setCte_telefone(e.target.value)}*/ class="form-control" id="cnpj" disabled/>
                                         </div>
                                     </div>
-                                </fieldset>
                             </div>
                         </div>
                         <div className="container_form">
-                            <div className="row g-2 bx-form">
-                                <fieldset>
+                            <div className="row g- bx-form">
                                     <legend>Contratado</legend>
                                     <div className="row g-2 cx-form">
                                     <div className="col-md-7">
@@ -104,18 +101,17 @@ function Emprestimos() {
                                     </div>
                                     </div>
                                     <div className="row g-2 cx-form">
-                                        <div className="col-md-6">
+                                        <div className="col-md-12">
                                             <label for="razao_social" class="form-label">Endereço</label>
                                             <input type="text" value={cto_endereco} onChange={e => setCto_Endereco(e.target.value)} class="form-control" id="razao_social" required/>
                                         </div>
                                     </div>
                                     <div className="row g-2 cx-form">
-                                        <div className="col-md-6">
+                                        <div className="col-md-12">
                                             <label for="cnpj" class="form-label">Telefone</label>
                                             <InputMask  type="text" mask="(99) 9 9999 9999" onChange={e => setCto_telefone(e.target.value)} class="form-control" id="cnpj" required/>
                                         </div>
                                     </div>
-                                </fieldset>
                             </div>
                         </div>
                     </div>
@@ -152,11 +148,11 @@ function Emprestimos() {
                                         </div>
                                         <div class="col-md-3">
                                             <label for="formGroupExampleInput" class="form-label">Valor</label>
-                                            <InputMask type="text" mask="99.999,99" value={valores} onChange={e => setValores(e.target.value)} class="form-control" placeholder="Valor" aria-label="Valor" required/>
+                                            <InputMask type="text" value={valores} onChange={e => setValores(e.target.value)} class="form-control" placeholder="Valor" aria-label="Valor" required/>
                                         </div>
                                         <div class="col-md-3">
                                             <label for="formGroupExampleInput" class="form-label">Prazo</label>
-                                            <input type="date" value={prazos} onChange={e => setPrazos(e.target.value)} class="form-control" placeholder="Prazo" aria-label="Prazo" required/>
+                                            <input type="text" value={prazos} onChange={e => setPrazos(e.target.value)} class="form-control" placeholder="Prazo" aria-label="Prazo" required/>
                                         </div>
                                     </div>
                                     <div className="row">
